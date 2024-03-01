@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_shade"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/layCircle"
+        >
+
+
+        <ImageView
+            android:id="@+id/logo"
+            android:src="@drawable/expense"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            />
+
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right"
+            >
+            <TextView
+                android:id="@+id/tvUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:background="#00ED43"
+                android:padding="3dp"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                />
+
+            <TextView
+                android:id="@+id/tvReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reason"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BDT 0.00"
+                android:textColor="#F44336"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Last edit :"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:background="#80FFEB3B"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
+
+                <TextView
+                    android:id="@+id/tvtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:layout_marginRight="10dp"
+                    android:background="#80FFEB3B"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
+
+                <TextView
+                    android:id="@+id/tvDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delete"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:background="#F61C1C"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
