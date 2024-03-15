@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     tools:context=".AddData"
 
    >
@@ -26,6 +26,14 @@
            android:text="ADD DATA"
            android:textSize="30dp"
            android:gravity="center"/>
+
+       <EditText
+           android:id="@+id/edID"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="ID" />
 
        <EditText
            android:id="@+id/edAmount"

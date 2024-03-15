@@ -113,6 +113,7 @@ public class ShowData extends AppCompatActivity {
             TextView tvDelete= myView.findViewById(R.id.tvDelete);
             TextView tvtime= myView.findViewById(R.id.tvtime);
             TextView tvupdate= myView.findViewById(R.id.tvUpdate);
+            TextView tvid= myView.findViewById(R.id.tvid);
 
             ImageView image = myView.findViewById(R.id.logo);
 
@@ -126,6 +127,7 @@ public class ShowData extends AppCompatActivity {
             tvReason.setText(reason);
             tvAmount.setText(amount);
             tvtime.setText(time);
+            tvid.setText(id);
 
 
             tvDelete.setOnClickListener(new View.OnClickListener() {
@@ -145,8 +147,8 @@ public class ShowData extends AppCompatActivity {
                 public void onClick(View v) {
 
 
-
-
+                    showDialogBox();
+                    loadData();
 
                 }
             });
@@ -172,7 +174,6 @@ public class ShowData extends AppCompatActivity {
 
 
 
-
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCancelable(false);
         dbHelper =new DatabaseHelper(this);
@@ -182,43 +183,39 @@ public class ShowData extends AppCompatActivity {
         TextView tvTitle = mView.findViewById(R.id.tvTitle);
         EditText edAmount = mView.findViewById(R.id.edAmount);
         EditText edReason = mView.findViewById(R.id.edReason);
+        EditText edid = mView.findViewById(R.id.edID);
         Button button = mView.findViewById(R.id.button);
 
 
-
-        if (EXPENSE==true) tvTitle.setText("Add Expense");
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sAmount = edAmount.getText().toString();
                 String reason = edReason.getText().toString();
+                String id = edid.getText().toString();
 
+                String res = edAmount.getText().toString();
                 String Name = edReason.getText().toString();
-                if (Name.isEmpty()) {
+
+                if (Name.isEmpty() || res.isEmpty() || id.isEmpty()) {
                     edReason.setError("Enter Your Reason");
+                    edAmount.setError("Enter Your Amount");
+                    edid.setError("Enter Your Amount");
 
                 }else {
 
+
                     double amount = Double.parseDouble(sAmount);
 
-                    if (EXPENSE==true){
+                    dbHelper.updateProduct(id, amount, reason);
 
-                        dbHelper.addexpense(amount,reason);
-                        tvTitle.setText("Expense Added!!");
-
-                    }else {
-                        dbHelper.addIncome(amount,reason);
-                        tvTitle.setText("Income Added!!");
-                    }
                 }
 
 
 
             }
         });
-
-
 
 
         mView.findViewById(R.id.dismiss).setOnClickListener(v -> {

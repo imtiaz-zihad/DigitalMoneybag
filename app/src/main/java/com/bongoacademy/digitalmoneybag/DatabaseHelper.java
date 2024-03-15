@@ -144,15 +144,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Boolean updateProduct(String name, double price, int quantity) {
+    public Boolean updateProduct(String id,Double amount,String reason) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("price", price);
-        contentValues.put("quantity", quantity);
-        Cursor cursor = DB.rawQuery("Select * from product where name = ?", new String[]{name});
+        contentValues.put("id", id);
+        contentValues.put("amount", amount);
+        contentValues.put("reason", reason);
+        Cursor cursor = DB.rawQuery("Select * from income where id = ?", new String[]{id});
         if (cursor.getCount() > 0) {
-            long result = DB.update("product", contentValues, "name=?", new String[]{name});
+            long result = DB.update("income", contentValues, "id=?", new String[]{id});
             if (result == -1) {
                 return false;
             } else {
