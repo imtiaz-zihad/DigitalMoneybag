@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:layout_margin="16dp"
+    android:background="@drawable/bg"
+
     >
 
 
@@ -18,6 +18,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         >
 
         <TextView
@@ -58,19 +59,35 @@
 
 
 
+    <RelativeLayout
+        android:id="@+id/gra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        >
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="295dp" />
+
+    </RelativeLayout>
+
+
 
 
 
 
 
     <RelativeLayout
+        android:layout_margin="16dp"
         android:id="@+id/layExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_shade"
         android:padding="20dp"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/layCircle"
+        android:layout_below="@id/gra"
         >
 
 
@@ -153,6 +170,7 @@
 
 
     <RelativeLayout
+        android:layout_margin="16dp"
         android:id="@+id/layIncome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -236,17 +254,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layIncome">
 
-<com.github.mikephil.charting.charts.PieChart
-    android:id="@+id/chart"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"/>
-
-    </RelativeLayout>
 
 
 

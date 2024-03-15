@@ -1,57 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     tools:context=".AddData"
     android:orientation="vertical"
-    android:layout_margin="16dp">
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ADD DATA"
-        android:textSize="30dp"
-        android:gravity="center"/>
-
-    <EditText
-        android:id="@+id/edAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Amount" />
-
-    <EditText
-        android:id="@+id/edReason"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Reason" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/dismiss"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Dismiss"
-            android:backgroundTint="#FD1313"/>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Insert Data"
-            android:backgroundTint="#1FA109"
-            android:layout_marginStart="50dp"/>
-
-    </LinearLayout>
+   >
 
 
-</LinearLayout>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    app:cardCornerRadius="25sp"
+    android:backgroundTint="#9527DAC5">
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <TextView
+           android:id="@+id/tvTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="ADD DATA"
+           android:textSize="30dp"
+           android:gravity="center"/>
+
+       <EditText
+           android:id="@+id/edAmount"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="number"
+           android:hint="Amount" />
+
+       <EditText
+           android:id="@+id/edReason"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="text"
+           android:hint="Reason" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+           <Button
+               android:id="@+id/dismiss"
+               android:layout_width="150dp"
+               android:layout_height="wrap_content"
+               android:text="Dismiss"
+               android:backgroundTint="#FD1313"
+               android:layout_marginStart="10dp"/>
+
+           <Button
+               android:id="@+id/button"
+               android:layout_width="150dp"
+               android:layout_height="wrap_content"
+               android:text="Insert Data"
+               android:backgroundTint="#1FA109"
+               android:layout_marginStart="50dp"/>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+</androidx.cardview.widget.CardView>
