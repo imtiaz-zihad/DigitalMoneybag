@@ -145,6 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public Boolean updateProduct(String id,Double amount,String reason) {
+
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", id);
