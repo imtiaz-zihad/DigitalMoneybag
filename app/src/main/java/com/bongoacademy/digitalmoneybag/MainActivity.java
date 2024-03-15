@@ -1,10 +1,15 @@
 package com.bongoacademy.digitalmoneybag;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             tvAddIncome,tvShowAllDataIncome,tvTotalIncome;
 
     DatabaseHelper dbHelper;
+    public static  boolean EXPENSE = true;
 
 
     @Override
@@ -42,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
         tvAddExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddData.EXPENSE = true;
-                startActivity(new Intent(MainActivity.this, AddData.class));
+                EXPENSE = true;
+                //startActivity(new Intent(MainActivity.this, AddData.class));
+                showDialogBox();
 
             }
         });
@@ -51,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
         tvAddIncome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddData.EXPENSE = false;
-                startActivity(new Intent(MainActivity.this, AddData.class));
+               EXPENSE = false;
+               // startActivity(new Intent(MainActivity.this, AddData.class));
+                showDialogBox();
 
             }
         });
@@ -85,6 +93,67 @@ public class MainActivity extends AppCompatActivity {
 
     } //Oncrette Finish ===================================================================
 
+
+    private void showDialogBox(){
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_add_data, null);
+        alert.setView(mView);
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCancelable(false);
+        dbHelper =new DatabaseHelper(this);
+
+        TextView tvTitle = mView.findViewById(R.id.tvTitle);
+        EditText edAmount = mView.findViewById(R.id.edAmount);
+        EditText edReason = mView.findViewById(R.id.edReason);
+        Button button = mView.findViewById(R.id.button);
+
+
+
+        if (EXPENSE==true) tvTitle.setText("Add Expense");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sAmount = edAmount.getText().toString();
+                String reason = edReason.getText().toString();
+
+                String Name = edReason.getText().toString();
+                if (Name.isEmpty()) {
+                    edReason.setError("Enter Your Reason");
+
+                }else {
+
+                    double amount = Double.parseDouble(sAmount);
+
+                    if (EXPENSE==true){
+
+                        dbHelper.addexpense(amount,reason);
+                        tvTitle.setText("Expense Added!!");
+
+                    }else {
+                        dbHelper.addIncome(amount,reason);
+                        tvTitle.setText("Income Added!!");
+                    }
+                }
+                upDateUI();
+
+
+            }
+        });
+
+
+
+
+        mView.findViewById(R.id.dismiss).setOnClickListener(v -> {
+            alertDialog.dismiss();
+        });
+
+        alertDialog.show();
+    }
+
+
     public void upDateUI(){
         tvTotalExpense.setText(""+dbHelper.calculatedTotalExpense());
         tvTotalIncome.setText(""+dbHelper.calculatedTotalIncome());
@@ -97,12 +166,26 @@ public class MainActivity extends AppCompatActivity {
         String tv3 = tvFinalBlance.getText().toString();
 
 
+        int color = 0xFFFFFFFF;
+        int piecenterbackcolor = 0xFFFFA500;
+
+
+
         ArrayList<PieEntry> pai =new ArrayList<>();
+        pieChart.setEntryLabelTextSize(16f);
+      //  pieChart.setCenterTextColor();
+        pieChart.setCenterText(tv3);
+        pieChart.setCenterTextColor(color);
+        pieChart.setCenterTextSize(27);
+        pieChart.setDrawCenterText(true);
+        pieChart.setHoleColor(piecenterbackcolor);
+
+
         /// pai.add(new PieEntry(80f,"Math"));
         /// pai.add(new PieEntry(50f,"Eng"));
         pai.add(new PieEntry(Float.parseFloat(tv),"Income"));
-        pai.add(new PieEntry(Float.parseFloat(tv2),"Expense"));
         pai.add(new PieEntry(Float.parseFloat(tv3),"Balance"));
+        pai.add(new PieEntry(Float.parseFloat(tv2),"Expense"));
 
 
 
