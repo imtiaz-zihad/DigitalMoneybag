@@ -31,6 +31,7 @@ public class ShowData extends AppCompatActivity {
 
     public static boolean EXPENSE = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
