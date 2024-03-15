@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     tools:context=".AddData"
-    android:orientation="vertical"
+
    >
 
 
-<androidx.cardview.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    app:cardCornerRadius="25sp"
-    android:backgroundTint="#9527DAC5">
+
 
 
    <LinearLayout
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical">
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:background="#9527DAC5"
+     >
 
        <TextView
            android:id="@+id/tvTitle"
@@ -64,13 +62,13 @@
                android:layout_height="wrap_content"
                android:text="Insert Data"
                android:backgroundTint="#1FA109"
-               android:layout_marginStart="50dp"/>
+               android:layout_marginStart="40dp"/>
 
        </LinearLayout>
 
    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
 
 
-</androidx.cardview.widget.CardView>
+
+</LinearLayout>

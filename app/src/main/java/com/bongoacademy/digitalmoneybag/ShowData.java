@@ -1,5 +1,6 @@
 package com.bongoacademy.digitalmoneybag;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -141,8 +144,7 @@ public class ShowData extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    if (EXPENSE==true) dbHelper.updateEx(id, Double.valueOf(amount));
-                    else dbHelper.updateIncome(id, Double.valueOf(amount));
+
 
 
 
@@ -159,5 +161,70 @@ public class ShowData extends AppCompatActivity {
 
             return myView;
         }
+    }
+
+    private void showDialogBox(){
+
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        View mView = getLayoutInflater().inflate(R.layout.activity_add_data, null);
+        alert.setView(mView);
+
+
+
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCancelable(false);
+        dbHelper =new DatabaseHelper(this);
+
+        alertDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
+
+        TextView tvTitle = mView.findViewById(R.id.tvTitle);
+        EditText edAmount = mView.findViewById(R.id.edAmount);
+        EditText edReason = mView.findViewById(R.id.edReason);
+        Button button = mView.findViewById(R.id.button);
+
+
+
+        if (EXPENSE==true) tvTitle.setText("Add Expense");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sAmount = edAmount.getText().toString();
+                String reason = edReason.getText().toString();
+
+                String Name = edReason.getText().toString();
+                if (Name.isEmpty()) {
+                    edReason.setError("Enter Your Reason");
+
+                }else {
+
+                    double amount = Double.parseDouble(sAmount);
+
+                    if (EXPENSE==true){
+
+                        dbHelper.addexpense(amount,reason);
+                        tvTitle.setText("Expense Added!!");
+
+                    }else {
+                        dbHelper.addIncome(amount,reason);
+                        tvTitle.setText("Income Added!!");
+                    }
+                }
+
+
+
+            }
+        });
+
+
+
+
+        mView.findViewById(R.id.dismiss).setOnClickListener(v -> {
+            alertDialog.dismiss();
+        });
+
+        alertDialog.show();
     }
 }

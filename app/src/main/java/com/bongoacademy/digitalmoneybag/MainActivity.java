@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    } //Oncrette Finish ===================================================================
+    } //On create Finish ===================================================================
 
 
     private void showDialogBox(){
@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog alertDialog = alert.create();
         alertDialog.setCancelable(false);
         dbHelper =new DatabaseHelper(this);
+
+        alertDialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.dialog_bg));
 
         TextView tvTitle = mView.findViewById(R.id.tvTitle);
         EditText edAmount = mView.findViewById(R.id.edAmount);

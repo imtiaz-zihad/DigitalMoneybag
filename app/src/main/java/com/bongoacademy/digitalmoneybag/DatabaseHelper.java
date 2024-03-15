@@ -142,4 +142,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
        // db.execSQL("UPDATE " + "expense" + " SET name ='" + sName + "' WHERE id =" +id);
 
     }
+
+
+    public Boolean updateProduct(String name, double price, int quantity) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("price", price);
+        contentValues.put("quantity", quantity);
+        Cursor cursor = DB.rawQuery("Select * from product where name = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("product", contentValues, "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }
