@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".AddData"
+
 
    >
 
@@ -23,7 +23,7 @@
            android:id="@+id/tvTitle"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="ADD DATA"
+           android:text="Update"
            android:textSize="30dp"
            android:gravity="center"/>
 
@@ -33,7 +33,7 @@
            android:layout_height="wrap_content"
            android:ems="10"
            android:inputType="number"
-           android:hint="ID" />
+           android:hint="Tokon Number" />
 
        <EditText
            android:id="@+id/edAmount"

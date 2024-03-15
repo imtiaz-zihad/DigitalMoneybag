@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Base64;
@@ -190,6 +191,7 @@ public class ShowData extends AppCompatActivity {
 
 
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String sAmount = edAmount.getText().toString();
@@ -209,9 +211,16 @@ public class ShowData extends AppCompatActivity {
 
                     double amount = Double.parseDouble(sAmount);
 
+                    if (EXPENSE==true){
+                        dbHelper.updateExpense(id, amount, reason);
+                        Toast.makeText(ShowData.this, "Update!!", Toast.LENGTH_SHORT).show();
+                    }
                     dbHelper.updateProduct(id, amount, reason);
+                    Toast.makeText(ShowData.this, "Update!!", Toast.LENGTH_SHORT).show();
+
 
                 }
+                loadData();
 
 
 

@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     private void showDialogBox(){
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.activity_add_data, null);
+        View mView = getLayoutInflater().inflate(R.layout.addinexinfo, null);
         alert.setView(mView);
 
         final AlertDialog alertDialog = alert.create();

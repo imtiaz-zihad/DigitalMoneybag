@@ -3,8 +3,10 @@ package com.bongoacademy.digitalmoneybag;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -144,6 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+
     public Boolean updateProduct(String id,Double amount,String reason) {
 
         SQLiteDatabase DB = this.getWritableDatabase();
@@ -154,6 +157,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = DB.rawQuery("Select * from income where id = ?", new String[]{id});
         if (cursor.getCount() > 0) {
             long result = DB.update("income", contentValues, "id=?", new String[]{id});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean updateExpense(String id,Double amount,String reason) {
+
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", id);
+        contentValues.put("amount", amount);
+        contentValues.put("reason", reason);
+        Cursor cursor = DB.rawQuery("Select * from expense where id = ?", new String[]{id});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("expense", contentValues, "id=?", new String[]{id});
             if (result == -1) {
                 return false;
             } else {
