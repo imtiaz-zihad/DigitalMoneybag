@@ -20,10 +20,14 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ShowData extends AppCompatActivity {
 
     ListView listView;
     TextView tvTitle;
+
+    CircleImageView circleImageView;
 
     DatabaseHelper dbHelper;
 
@@ -39,6 +43,7 @@ public class ShowData extends AppCompatActivity {
         setContentView(R.layout.activity_show_data);
         listView = findViewById(R.id.listview);
         tvTitle = findViewById(R.id.tvTitle);
+        circleImageView=findViewById(R.id.tvUpdate);
         dbHelper = new DatabaseHelper(this);
 
         if (EXPENSE==true) tvTitle.setText("Showing All Expenses");
@@ -114,7 +119,7 @@ public class ShowData extends AppCompatActivity {
             TextView tvAmount = myView.findViewById(R.id.tvAmount);
             TextView tvDelete= myView.findViewById(R.id.tvDelete);
             TextView tvtime= myView.findViewById(R.id.tvtime);
-            TextView tvupdate= myView.findViewById(R.id.tvUpdate);
+           // TextView tvupdate= myView.findViewById(R.id.tvUpdate);
             TextView tvid= myView.findViewById(R.id.tvid);
 
             ImageView image = myView.findViewById(R.id.logo);
@@ -144,7 +149,7 @@ public class ShowData extends AppCompatActivity {
                 }
             });
 
-            tvupdate.setOnClickListener(new View.OnClickListener() {
+            circleImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
