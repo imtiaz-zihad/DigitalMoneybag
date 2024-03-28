@@ -113,7 +113,7 @@ public class ShowData extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
-           View myView = inflater.inflate(R.layout.design,parent,false);
+           View myView = inflater.inflate(R.layout.datapage,parent,false);
 
            TextView tvReason = myView.findViewById(R.id.tvReason);
             TextView tvAmount = myView.findViewById(R.id.tvAmount);
