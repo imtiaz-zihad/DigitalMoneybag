@@ -16,18 +16,20 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class ShowData extends AppCompatActivity {
 
     ListView listView;
     TextView tvTitle;
 
-    CircleImageView circleImageView;
+    ImageView circleImageView;
 
     DatabaseHelper dbHelper;
 
@@ -45,6 +47,10 @@ public class ShowData extends AppCompatActivity {
         tvTitle = findViewById(R.id.tvTitle);
         circleImageView=findViewById(R.id.tvUpdate);
         dbHelper = new DatabaseHelper(this);
+
+        Glide.with(this)
+                .load(R.drawable.edit)
+                .into(circleImageView);
 
         if (EXPENSE==true) tvTitle.setText("Showing All Expenses");
 
@@ -145,20 +151,21 @@ public class ShowData extends AppCompatActivity {
                     else dbHelper.deleteIncome(id);
                     loadData();
 
-
                 }
             });
 
             circleImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
                     showDialogBox();
                     loadData();
+                    String time = hashMap.get("time");
+                    tvtime.setText(time);
 
                 }
+
             });
+
 
             if (EXPENSE==true)image.setImageResource(R.drawable.expense);
 
@@ -173,6 +180,7 @@ public class ShowData extends AppCompatActivity {
     }
 
     private void showDialogBox(){
+        loadData();
 
 
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -197,14 +205,16 @@ public class ShowData extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
 
+
             @Override
             public void onClick(View v) {
                 String sAmount = edAmount.getText().toString();
                 String reason = edReason.getText().toString();
                 String id = edid.getText().toString();
-
                 String res = edAmount.getText().toString();
                 String Name = edReason.getText().toString();
+
+
 
                 if (Name.isEmpty() || res.isEmpty() || id.isEmpty()) {
                     edReason.setError("Enter Your Reason");
@@ -224,8 +234,11 @@ public class ShowData extends AppCompatActivity {
                     Toast.makeText(ShowData.this, "Update!!", Toast.LENGTH_SHORT).show();
 
 
+
                 }
+
                 loadData();
+                alertDialog.dismiss();
 
 
 

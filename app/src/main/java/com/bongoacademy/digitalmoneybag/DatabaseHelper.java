@@ -149,11 +149,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Boolean updateProduct(String id,Double amount,String reason) {
 
+        long currentTimeMillis = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        String formattedTime = sdf.format(new Date(currentTimeMillis));
+
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", id);
         contentValues.put("amount", amount);
         contentValues.put("reason", reason);
+        contentValues.put("time", formattedTime);
         Cursor cursor = DB.rawQuery("Select * from income where id = ?", new String[]{id});
         if (cursor.getCount() > 0) {
             long result = DB.update("income", contentValues, "id=?", new String[]{id});
@@ -168,12 +173,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Boolean updateExpense(String id,Double amount,String reason) {
+        long currentTimeMillis = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        String formattedTime = sdf.format(new Date(currentTimeMillis));
+
 
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", id);
         contentValues.put("amount", amount);
         contentValues.put("reason", reason);
+        contentValues.put("time", formattedTime);
         Cursor cursor = DB.rawQuery("Select * from expense where id = ?", new String[]{id});
         if (cursor.getCount() > 0) {
             long result = DB.update("expense", contentValues, "id=?", new String[]{id});
