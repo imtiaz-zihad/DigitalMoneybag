@@ -29,16 +29,7 @@
         android:layout_margin="16dp"
         />
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:layout_width="60dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:src="@drawable/update"-->
-<!--        android:backgroundTint="@android:color/transparent"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--      />-->
+
 
 
 <androidx.cardview.widget.CardView
@@ -60,11 +51,6 @@
         android:src="@drawable/edit"/>
 
 </androidx.cardview.widget.CardView>
-
-
-
-
-
 
 
 </RelativeLayout>
